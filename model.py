@@ -1,8 +1,8 @@
 import gradio as gr
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-tokenizer = AutoTokenizer.from_pretrained("openai-community/gpt2")
-model = AutoModelForCausalLM.from_pretrained("openai-community/gpt2")
+tokenizer = AutoTokenizer.from_pretrained("elyza/ELYZA-japanese-Llama-2-13b")
+model = AutoModelForCausalLM.from_pretrained("elyza/ELYZA-japanese-Llama-2-13b")
 
 def generate_response(input_text):
     inputs = tokenizer.encode(input_text + tokenizer.eos_token, return_tensors="pt")
