@@ -1,8 +1,8 @@
 import gradio as gr
-from transformers import AutoTokenizer, AutoModelForQuestionAnswering
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-tokenizer = AutoTokenizer.from_pretrained("tsmatz/roberta_qa_japanese")
-model = AutoModelForQuestionAnswering.from_pretrained("tsmatz/roberta_qa_japanese")
+tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-large")
+model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-large")
 
 def generate_response(input_text):
     #  入力テキストをトークナイザーでエンコード
