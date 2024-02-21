@@ -11,4 +11,4 @@ def generate_response(input_text):
     return response
 
 iface = gr.Interface(fn=generate_response, inputs="text", outputs="text")
-iface.launch()
+iface.launch(share=True)
