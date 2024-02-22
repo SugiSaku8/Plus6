@@ -1,14 +1,16 @@
 import gradio as gr
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from gpt4all import GPT4All
 
-tokenizer = AutoTokenizer.from_pretrained("LargeWorldModel/LWM-Text-Chat-1M")
-model = AutoModelForCausalLM.from_pretrained("LargeWorldModel/LWM-Text-Chat-1M")
+# GPT4All-Jモデルのロード
+chatbot = GPT4All('GPT4All-J')
 
+#  入力と出力の関数を定義
 def generate_response(input_text):
-    inputs = tokenizer.encode(input_text + tokenizer.eos_token, return_tensors="pt")
-    outputs = model.generate(inputs, max_length=1000, pad_token_id=tokenizer.eos_token_id)
-    response = tokenizer.decode(outputs[:, inputs.shape[-1]:][0], skip_special_tokens=True)
+    response = chatbot.generate(input_text)
     return response
 
+# Gradioインターフェースの作成
 iface = gr.Interface(fn=generate_response, inputs="text", outputs="text")
+
+#  インターフェースの起動
 iface.launch(share=True)

@@ -1,1 +1,1 @@
-pip install gradio transformers torch torchvision torchaudio
+pip install gradio transformers torch torchvision torchaudio gpt4all
